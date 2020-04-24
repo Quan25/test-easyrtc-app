@@ -37,13 +37,19 @@ function enable(domId) {
 
 var onceOnly = true;
 
+function createLabelledButton(buttonLabel) {
+    var button = document.createElement("button");
+    button.appendChild(document.createTextNode(buttonLabel));
+    document.getElementById("videoSrcBlk").appendChild(button);
+    return button;
+}
 
-function connect() {	
+function connect() {
   easyrtc.enableAudio(document.getElementById("shareAudio").checked);
   easyrtc.enableVideo(document.getElementById("shareVideo").checked);
   easyrtc.enableDataChannels(true);
-  easyrtc.setRoomOccupantListener( convertListToButtons);    
-  easyrtc.connect("easyrtc.audioVideo", loginSuccess, loginFailure);			  
+  easyrtc.setRoomOccupantListener( convertListToButtons);
+  easyrtc.connect("easyrtc.audioVideo", loginSuccess, loginFailure);
   if( onceOnly ) {
       easyrtc.getAudioSinkList( function(list) {
          for(let ele of list ) {
@@ -52,7 +58,25 @@ function connect() {
       });
       onceOnly = false;
   }
-} 
+  var screenShareButton = createLabelledButton("Desktop capture/share");
+    var numScreens = 0;
+
+    screenShareButton.onclick = function() {
+        numScreens++;
+        var streamName = "screen" + numScreens;
+        easyrtc.initDesktopStream(
+                function(stream) {
+                    createLocalVideo(stream, streamName);
+                    if (otherEasyrtcid) {
+                        easyrtc.addStreamToCall(otherEasyrtcid, streamName);
+                    }
+                },
+                function(errCode, errText) {
+                    easyrtc.showError(errCode, errText);
+                },
+                streamName);
+    };
+}
 
 
 function addSinkButton(label, deviceId){
@@ -147,16 +171,16 @@ function loginFailure(errorCode, message) {
 }
 
 function disconnect() {
-  easyrtc.disconnect();			  
+  easyrtc.disconnect();
   document.getElementById("iam").innerHTML = "logged out";
   enable("connectButton");
-  disable("disconnectButton"); 
+  disable("disconnectButton");
   easyrtc.clearMediaStream( document.getElementById('selfVideo'));
   easyrtc.setVideoObjectSrc(document.getElementById("selfVideo"),"");
   easyrtc.closeLocalMediaStream();
-  easyrtc.setRoomOccupantListener( function(){});  
+  easyrtc.setRoomOccupantListener( function(){});
   clearConnectList();
-} 
+}
 
 
 easyrtc.setStreamAcceptor( function(easyrtcid, stream) {
