@@ -18,7 +18,7 @@ Features
  * Use our EasyRTC API and sample application code to build and deploy your WebRTC app in hours not weeks.
  * EasyRTC is completely free and open source under a BSD 2 license. No usage costs or other hidden fees.
 
-Installation In A Nutshell
+Installation In A Nutshell (on localhost)
 --------------------------
  1. Install [Node.js](http://nodejs.org)
  2. Download the EasyRTC distribution from github (https://github.com/open-easyrtc/open-easyrtc.git)
@@ -33,6 +33,14 @@ Important note: Chrome will not grant access to local microphones or cameras for
 Step by step instructions including additional setup options can be found in `/docs/easyrtc_server_install.md`
 
 Note: there is no corresponding need to install the client files specifically; they were installed as part of EasyRTC in step 3.
+
+Deploy And Run On Amazon Web Service (AWS)
+--------------
+<details>
+<summary>Step 1: Create Instance on AWS</summary>
+<br>
+This is how you dropdown.
+</details>
 
 Included Demos
 --------------
