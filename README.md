@@ -39,10 +39,10 @@ Deploy And Run On Amazon Web Service (AWS)
 <details>
 <summary>Step 1: Create Instance on AWS</summary>
 <br>
-  - Create root account on [AWS]
-  -
+  - Create root account on [AWS] (https://aws.amazon.com/)
+
 </details>
-[AWS]: https://aws.amazon.com/
+
 Included Demos
 --------------
 
