@@ -39,7 +39,8 @@ Deploy And Run On Amazon Web Service (AWS)
 <details>
 <summary>Step 1: Create Instance on AWS</summary>
 <br>
-This is how you dropdown.
+  - Create root account on [AWS](https://aws.amazon.com/)
+  -
 </details>
 
 Included Demos
