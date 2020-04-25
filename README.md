@@ -40,7 +40,7 @@ Deploy And Run On Amazon Web Service (AWS)
 <summary>Step 1: Create Instance on AWS</summary>
 
 Please follow this <a href="https://github.com/Quan25/test-easyrtc-app/blob/master/documents/Setup_And_Create_EC2_Instance.pdf"> document</a> to create your first AWS Instance
-
+</details>
 
 <details>
 <summary>Step 2: Deploy and run on AWS</summary>
